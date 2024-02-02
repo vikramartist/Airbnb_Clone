@@ -1,3 +1,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .register-form {
+    @apply overflow-y-scroll mx-[25%] mt-[10vh] flex flex-col items-center justify-start p-4 rounded-xl shadow-md shadow-gray-400 absolute w-[50%] h-[68%] bg-gray-100;
+  }
+
+  .login-form {
+    @apply overflow-y-scroll mx-[25%] mt-[15vh] flex flex-col items-center justify-start p-4 rounded-xl shadow-md shadow-gray-400 absolute w-[50%] h-[60%] bg-gray-100;
+  }
+
+  .register-input {
+    @apply mt-2 flex flex-col justify-start gap-1 w-full;
+  }
+
+  .login-input {
+    @apply my-4 flex flex-col justify-start gap-1 w-full;
+  }
+
+  .register-alternate,
+  .login-alternate {
+    @apply w-full border-t-2 border-t-rose-300 mt-4;
+  }
+
+  .register-online,
+  .login-online {
+    @apply w-full mt-3 p-2 border-[0.5px] border-gray-500 bg-slate-50 rounded-md px-4 flex justify-between items-center cursor-pointer hover:bg-gray-200;
+  }
+
+  .register-input-style,
+  .login-input-style {
+    @apply border-none px-2 py-1 rounded-lg outline-none;
+  }
+
+  .register-btn,
+  .login-btn {
+    @apply text-lg text-white bg-rose-500 rounded-lg p-2 hover:bg-rose-600;
+  }
+
+  .auth {
+    @apply text-sm text-center mt-1 text-red-500;
+  }
+
+  .auth-link {
+    @apply text-sm hover:underline text-green-600;
+  }
+
+  .invisible-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
