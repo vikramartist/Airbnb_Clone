@@ -3,15 +3,20 @@ import Logo from "../components/Logo";
 import { useState } from "react";
 import Message from "../components/Message";
 import axios from "axios";
+import schema from "../utilities/PasswordChecker.js";
 
 const Register = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password] = useState("");
 
   const registerUser = (e) => {
     e.preventDefault();
     axios.get(`/test`);
+  };
+
+  const validatePassword = (password) => {
+    console.log(schema.validate(password, { details: true }));
   };
 
   return (
@@ -89,7 +94,7 @@ const Register = () => {
                   </p>
                 </Message>
               }
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => validatePassword(e.target.value)}
             />
             {password ? (
               <Message color={"green"}>Password looks good</Message>

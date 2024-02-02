@@ -1,30 +1,25 @@
-export const PasswordChecker = (password) => {
-  if (!password || password.length < 8) {
-    return false;
-  }
-  let lower = 0,
-    upper = 0,
-    specialCharacter = 0,
-    digit = 0;
-  for (let i = 0; i < password.length; i++) {
-    const char = password.charAt(i);
-    if (char >= "0" && char <= "9") {
-      digit++;
-    } else if (char >= "a" && char <= "z") {
-      lower++;
-    } else if (char >= "A" && char <= "Z") {
-      upper++;
-    } else if (
-      char === "$" ||
-      char === "@" ||
-      char === "*" ||
-      char === "#" ||
-      char === "-"
-    ) {
-      specialCharacter++;
-    }
-  }
-  if (upper >= 2 && lower >= 2 && digit >= 1 && specialCharacter >= 1) {
-    return true;
-  } else return false;
-};
+import validator from "password-validator";
+
+const schema = new validator();
+
+schema
+  .is()
+  .min(8)
+  .is()
+  .max(100)
+  .has()
+  .digits(2)
+  .has()
+  .uppercase()
+  .has()
+  .lowercase()
+  .has()
+  .not()
+  .spaces()
+  .is()
+  .not()
+  .oneOf(["Password123", "12345678", "87654321"])
+  .has()
+  .symbols(1, "should have atleast 1 special character");
+
+export default schema;
